@@ -1,4 +1,4 @@
 sagemaker
-pytorch
+torch
 transformers
 seaborn

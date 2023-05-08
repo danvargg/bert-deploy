@@ -251,19 +251,15 @@ df_feature_store.to_csv('./feature_store_export.tsv',
 feature_store_query_2 = feature_group.athena_query()
 
 # Replace all None
-### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
 query_string_count_by_sentiment = """
 SELECT sentiment, COUNT(*) AS count_reviews
 FROM "{}"
 GROUP BY sentiment
 """.format(feature_store_table)
-### END SOLUTION - DO NOT delete this comment for grading purposes
 
 feature_store_query_2.run(
-    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
     query_string=query_string_count_by_sentiment,  # Replace None
     output_location=output_s3_uri  # Replace None
-    ### END SOLUTION - DO NOT delete this comment for grading purposes
 )
 
 feature_store_query_2.wait()
@@ -272,10 +268,8 @@ df_count_by_sentiment = feature_store_query_2.as_dataframe()
 print(df_count_by_sentiment)
 
 sns.barplot(
-    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
     data=df_count_by_sentiment,  # Replace None
     x='sentiment',  # Replace None
     y='count_reviews',  # Replace None
-    ### END SOLUTION - DO NOT delete this comment for grading purposes
     color="blue"
 )
